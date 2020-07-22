@@ -84,6 +84,14 @@ body {
 .comments li {
   margin: 2px 0;
   letter-spacing: 0.2px;
+  border: none;
+  background: none;
+  transition: color 300ms;
+  cursor: pointer;
+}
+
+.comments li:hover {
+  color: rgb(184, 184, 184);
 }
 
 .comment-form {

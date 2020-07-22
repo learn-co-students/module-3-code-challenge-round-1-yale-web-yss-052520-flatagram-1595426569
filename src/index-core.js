@@ -1,4 +1,4 @@
-// My main index.js.
+// Backup index.js just in case I mess up the main one.
 
 function qs(element) {
     return document.querySelector(element)
@@ -16,6 +16,11 @@ function fetchImage() {
 
 function displayImage(image) {
 
+    // <h2 class="title">Title of image goes here</h2>
+    // <img src="./assets/image-placeholder.jpg" class="image" />
+    // <span class="likes">0 likes</span>
+    // <button class="like-button">♥</button>
+
     let h2 = qs("h2")
     h2.innerText = image.title
 
@@ -25,6 +30,7 @@ function displayImage(image) {
     let span = qs(".likes")
     span.innerText = image.likes + " Likes"
 
+    // debugger
     let ul = qs(".comments")
     ul.textContent = ""
 
@@ -33,7 +39,6 @@ function displayImage(image) {
         e.target.remove()
     })
 
-    // Display All Comments
     image.comments.map(comment => comment.content).forEach(function (item) {
         let li = ce("li")
         let text = document.createTextNode(item)
@@ -63,7 +68,6 @@ function displayImage(image) {
     let form = qs(".comment-form")
     let input = qs(".comment-input")
 
-    // Add New Comment
     form.addEventListener("submit", () => {
         event.preventDefault()
 
