@@ -67,7 +67,7 @@ likeBtn.addEventListener("click", ()=> {
     .then(obj => likes.innerText = `${obj.likes} Likes`)
 })
 
-// downvoting ADV DELIVERABLE //can only downvote once without having to refresh...?
+// downvoting ADV DELIVERABLE
 dvBtn.addEventListener("click", ()=> {
     dvBtn.removeEventListener("click", callbackfunc(), true )
     callbackfunc()})
@@ -107,6 +107,24 @@ commentBtn.addEventListener("click", () => {
     const newComment = ce("li")
     newComment.innerText = commentForm[0].value
     commentList.append(newComment)
+
+    // ADV DELIVERABLE
+    let configObj = {
+        method: "POST",
+        headers: {
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+        },
+        body: JSON.stringify({
+            content: commentForm[0].value,
+            imageId: current.id
+        })
+    }
+    
+    fetch ("http://localhost:3000/comments", configObj)
+    // .then(res => res.json())
+    // .then(console.log)
+    
     commentForm.reset() // is this waiting even thought it's not async
 })
 
