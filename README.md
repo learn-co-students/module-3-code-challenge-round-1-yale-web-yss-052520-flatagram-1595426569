@@ -10,7 +10,7 @@ Use this gif as an example of how the app should work.
 
 ## Setup
 
-- Fork and clone this repository
+- Clone this repository
 - Run `json-server --watch db.json --routes routes.json` to get the backend started
 - Open the `index.html` file on your browser
 
