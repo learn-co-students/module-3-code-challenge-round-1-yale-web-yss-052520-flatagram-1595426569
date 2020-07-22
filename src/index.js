@@ -37,13 +37,31 @@ function displayImg(pic){
     current = pic
     dv.innerText = `${pic.downvotes} downvotes`
 
-    pic.comments.forEach(com => showComment(com))
-    function showComment(com){
+    showComments(pic)
+}
+
+function showComments(current){
+    current.comments.forEach(com => {
         const addComment = ce("li") // need inside func scope so that it creates a new one for each comment
         addComment.innerText = com.content
+    
+        const deleteBtn = ce("button")
+        deleteBtn.className="delete-button"
+        deleteBtn.innerText= "x"
+        
+        addComment.append(deleteBtn)
         commentList.append(addComment)
         // debugger
-    }
+    
+        deleteBtn.addEventListener("click", ()=>{
+            commentList.removeChild(addComment)
+
+            let configObj = {
+                method: "DELETE"
+            }
+            fetch ("http://localhost:3000/comments/"+com.id, configObj)
+        })
+    })
 }
 
 // increase image likes (PATCH)
@@ -105,8 +123,13 @@ commentBtn.addEventListener("click", () => {
     // debugger
 
     const newComment = ce("li")
-    newComment.innerText = commentForm[0].value
-    commentList.append(newComment)
+
+    const deleteBtn = ce("button")
+    deleteBtn.className="delete-button"
+    deleteBtn.innerText= "x"
+
+    newComment.innerText = commentForm[0].value 
+    
 
     // ADV DELIVERABLE
     let configObj = {
@@ -122,10 +145,30 @@ commentBtn.addEventListener("click", () => {
     }
     
     fetch ("http://localhost:3000/comments", configObj)
+    .then(
+        newComment.append(deleteBtn),
+        commentList.append(newComment)
+    )
+
+    // currentComment = current.comments.find(com => com.content == newComment.innerText) // doesn't work bc newComment hasn't been added to server yet
+
+    deleteBtn.addEventListener("click", ()=>{
+        commentList.removeChild(newComment)
+    
+        let configObj = {
+            method: "DELETE"
+        }
+        // debugger
+        fetch ("http://localhost:3000/comments/"+newComment.id, configObj) //newComment is an li so this doesn't work, but I can't figure out how to grab the just created object
+    })
     // .then(res => res.json())
     // .then(console.log)
     
     commentForm.reset() // is this waiting even thought it's not async
 })
+
+
+
+
 
 fetchImg()
