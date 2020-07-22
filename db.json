@@ -3,8 +3,92 @@
     {
       "id": 1,
       "title": "Woofing those bugs away",
-      "likes": 0,
+      "likes": 14,
       "image": "./assets/coder-dog.png"
+    },
+    {
+      "comment": "test",
+      "id": 2
+    },
+    {
+      "comment": "test",
+      "id": 3
+    },
+    {
+      "comment": "test",
+      "id": 4
+    },
+    {
+      "comment": "test",
+      "id": 5
+    },
+    {
+      "comment": "test",
+      "id": 6
+    },
+    {
+      "comment": "test",
+      "id": 7
+    },
+    {
+      "comment": "test",
+      "id": 8
+    },
+    {
+      "comment": "commnet",
+      "id": 9
+    },
+    {
+      "comment": "comment",
+      "id": 10
+    },
+    {
+      "comment": "comment",
+      "id": 11
+    },
+    {
+      "comment": "test",
+      "id": 12
+    },
+    {
+      "comment": "test",
+      "id": 13
+    },
+    {
+      "comment": "li",
+      "id": 14
+    },
+    {
+      "comment": "test",
+      "id": 15
+    },
+    {
+      "comment": "test",
+      "id": 16
+    },
+    {
+      "comment": "test",
+      "id": 17
+    },
+    {
+      "comment": "test",
+      "id": 18
+    },
+    {
+      "comment": "test",
+      "id": 19
+    },
+    {
+      "comment": "test",
+      "id": 20
+    },
+    {
+      "comment": "test",
+      "id": 21
+    },
+    {
+      "comment": "new comment",
+      "id": 22
     }
   ],
   "comments": [
@@ -22,6 +106,14 @@
       "id": 3,
       "imageId": 1,
       "content": "Woof!"
+    },
+    {
+      "comment": "test",
+      "id": 4
+    },
+    {
+      "comment": "test",
+      "id": 5
     }
   ]
 }
