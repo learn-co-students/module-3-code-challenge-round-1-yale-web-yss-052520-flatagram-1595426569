@@ -12,26 +12,30 @@ const img = qs("img.image")
 const commentList = qs("ul.comments")
 const likes = qs("span.likes")
 // const addComment = ce("li")
-// let current_pic = {}
+let current = {}
 const likeBtn = qs("button.like-button")
 const commentForm = qs("form.comment-form")
 const commentBtn = qs("button.comment-button")
+const dvBtn = qs("button.dv-button")
+const dv = qs("span.dv")
 
 // fetch GET images
 function fetchImg(){
     fetch("http://localhost:3000/images/1")
     .then(res => res.json())
-    // .then(console.log)
+    // .then(data => console.log(data))
     .then(displayImg)
 }
 
 // display Img on DOM
 function displayImg(pic){
+    // debugger
     img.src = pic.image 
     title.innerText = pic.title
     likes.innerText = `${pic.likes} Likes`
     commentList.innerHTML = "" // be careful
-    // current_pic = pic
+    current = pic
+    dv.innerText = `${pic.downvotes} downvotes`
 
     pic.comments.forEach(com => showComment(com))
     function showComment(com){
@@ -44,8 +48,8 @@ function displayImg(pic){
 
 // increase image likes (PATCH)
 likeBtn.addEventListener("click", ()=> {
-    let oneLike = likes.innerText.split(" ")[0]
-    let newLikeTotal = parseInt(oneLike, 10) + 1 
+    let currentLikes = likes.innerText.split(" ")[0]
+    let newLikeTotal = parseInt(currentLikes, 10) + 1 
     // debugger
     let configObj = {
         method: "PATCH",
@@ -63,6 +67,39 @@ likeBtn.addEventListener("click", ()=> {
     .then(obj => likes.innerText = `${obj.likes} Likes`)
 })
 
+// downvoting ADV DELIVERABLE //can only downvote once without having to refresh...?
+dvBtn.addEventListener("click", ()=> {
+    dvBtn.removeEventListener("click", callbackfunc(), true )
+    callbackfunc()})
+
+function callbackfunc(){
+    // debugger
+    dv.innerText = `${current.downvotes} downvotes`
+    let currentDV = dv.innerText.split(" ")[0]
+    let newDVTotal = parseInt(currentDV, 10) + 1 
+    // debugger
+    let configObj = {
+        method: "PATCH",
+        headers: {
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+        },
+        body: JSON.stringify({
+            downvotes: newDVTotal
+        })
+    }
+    
+    fetch ("http://localhost:3000/images/1", configObj)
+    .then(res => res.json())
+    .then(obj => dv.innerText = `${newDVTotal} downvotes`)
+    // .then(obj => displayImg(obj))
+    // debugger
+
+    fetchImg(current) 
+}
+
+
+// add comment (not persisting)
 commentBtn.addEventListener("click", () => {
     event.preventDefault()
     // debugger
