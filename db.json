@@ -73,6 +73,22 @@
     {
       "comment": "test",
       "id": 18
+    },
+    {
+      "comment": "test",
+      "id": 19
+    },
+    {
+      "comment": "test",
+      "id": 20
+    },
+    {
+      "comment": "test",
+      "id": 21
+    },
+    {
+      "comment": "new comment",
+      "id": 22
     }
   ],
   "comments": [
@@ -90,6 +106,14 @@
       "id": 3,
       "imageId": 1,
       "content": "Woof!"
+    },
+    {
+      "comment": "test",
+      "id": 4
+    },
+    {
+      "comment": "test",
+      "id": 5
     }
   ]
 }

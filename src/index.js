@@ -85,11 +85,13 @@ function showoneImage(imag) {
         headers: {
             'Content-Type': "application/json"
         },
-        body: JSON.stringify({comment: comment})
+        body: JSON.stringify({
+            comment: comment
+        })
     })
 .then(response => response.json())
-.then(comment => {
-    li.innerText = comment
+.then(ocomment => {
+    li.innerText = ocomment.comment
 })
 form.reset()
 })
