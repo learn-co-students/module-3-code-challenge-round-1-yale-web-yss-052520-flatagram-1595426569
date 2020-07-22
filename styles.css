@@ -62,6 +62,16 @@ body {
   cursor: pointer;
 }
 
+.dislike-button {
+  color: rgb(14, 38, 255);
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+  transition: color 300ms;
+  cursor: pointer;
+  /* transform: rotateY(180deg); */
+}
+
 .like-button:hover {
   color: rgb(241, 71, 19);
 }
